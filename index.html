@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anoma Game</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            background: url('intro_background.jpg') no-repeat center top;
+            background-size: contain; /* Tüm görseli gösterir */
+            overflow: hidden;
+        }
+        .menu {
+            position: relative;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .cauldron {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle at 50% 80%, #000 0%, #333 70%, #666 100%);
+            border-radius: 50% 50% 0 0;
+            border: 10px solid #4a2c2a;
+            position: relative;
+            overflow: hidden;
+        }
+        .cauldron::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 40px;
+            background: #4a2c2a;
+            border-radius: 50%;
+        }
+        .cauldron::after {
+            content: "";
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 69, 0, 0.3);
+            border-radius: 50%;
+            animation: bubble 2s infinite;
+        }
+        @keyframes bubble {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.2); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+        .menu button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            font-size: 24px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            color: #ff4500;
+            text-shadow: 2px 2px 4px #000;
+            z-index: 1;
+        }
+        .menu button:hover {
+            color: #e03a00;
+        }
+        #game-container {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        #game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            z-index: 100;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #ccc1 {
+            width: 600px;
+            height: 600px;
+            background-image: url('ccc1.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-bottom: 20px;
+        }
+
+        #refresh-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        #footer-text {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        #final-score {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="spaceship"></div>
+        <div id="planet-container"></div>
+        <div id="countdown">60</div>
+        <div id="score-board">Score: 0</div>
+        <div id="game-over">
+            <div id="final-score">Final Score: 0</div>
+            <div id="ccc1"></div>
+            <button id="refresh-button">Refresh</button>
+              <div id="footer-text">
+                Anoma X address: <a href="https://x.com/anoma" target="_blank">https://x.com/anoma</a><br>
+                Anoma Website: <a href="https://anoma.net/" target="_blank">https://anoma.net/</a>
+            </div>
+        </div>
+    </div>
+    <div class="menu">
+        <div class="cauldron"></div>
+        <button id="start-button">Start Game</button>
+    </div>
+    <script>
+        const startButton = document.getElementById('start-button');
+        const gameContainer = document.getElementById('game-container');
+        const gameOverScreen = document.getElementById('game-over'); 
+        
+        // This function is now just for showing/hiding screens, the game logic starts in script.js
+        startButton.addEventListener('click', () => {
+            document.querySelector('.menu').style.display = 'none';
+            gameContainer.style.display = 'block';
+            gameOverScreen.style.display = 'none';
+            
+            // Call a function from script.js to truly start the game
+            if (typeof startGameLogic === 'function') {
+                startGameLogic(); 
+            }
+        });
+
+        // The showGameOverScreen function is now primarily handled in script.js
+        // Keep a placeholder here if needed for direct calls, but it's better to manage central game state in script.js
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

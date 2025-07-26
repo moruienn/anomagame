@@ -1,0 +1,130 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* HTML ve body elementlerini tam yükseklikte yap */
+    overflow: hidden; /* Kaydırma çubuklarını gizle */
+}
+
+#game-container {
+    position: relative;
+    width: 100%;
+    height: 100%; /* Oyun konteynerini tam yükseklikte yap */
+    background-image: url('space-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#spaceship {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background-image: url('aaa1.png');
+    background-size: cover;
+}
+
+#planet-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.planet {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    background-image: url('bbb1.png');
+    background-size: cover;
+}
+
+.bullet {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('bullet.png'); /* Mermi görseli */
+    background-size: cover;
+    bottom: 0;
+    left: 0;
+}
+
+#countdown {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#score-board {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#game-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+}
+
+#ccc1 {
+    width: 300px;
+    animation: slideUp 2s forwards, pause 5s 2s forwards;
+    opacity: 0;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pause {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#refresh-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    display: none;
+}
+
+#footer-text {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    display: none;
+}
+background: url('images/intro_background.jpg') no-repeat center center fixed;
