@@ -1,1 +1,1 @@
-# rpc-hunter
+# Anoma game
